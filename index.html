@@ -1,95 +1,143 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="kk">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>QazShop AI Lab — роботты оқыту зертханасы</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI SPACE LAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app">
-<aside>
- <div class="logo"><div class="bot">AI</div><div><b>QazShop</b><small>ROBOT LAB</small></div></div>
- <div class="labstate"><span></span><div><b>AI Robot online</b><small id="memorySide">0 мысал үйренді</small></div></div>
- <nav>
-  <button class="nav active" data-page="home">⌂ <span>Зертхана</span></button>
-  <button class="nav" data-page="teach">✦ <span>Роботты оқыту</span></button>
-  <button class="nav" data-page="classify">◎ <span>Классификация</span></button>
-  <button class="nav" data-page="cluster">◌ <span>Кластеризация</span></button>
-  <button class="nav" data-page="data">▦ <span>Деректер</span></button>
-  <button class="nav" data-page="theory">◈ <span>Қалай жұмыс істейді?</span></button>
- </nav>
- <div class="aside-foot"><small>AI STORE LAB v2.0</small><p>Machine Learning оқу жобасы</p></div>
+<canvas id="stars"></canvas>
+<div class="noise"></div>
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">A</div><div><b>AI SPACE</b><span>RESEARCH LAB</span></div></div>
+  <div class="status"><i></i><div><b>ASTRA AI ONLINE</b><span id="sideMemory">24 training samples</span></div></div>
+  <nav>
+    <button class="nav active" data-page="home"><em>01</em><span>Mission Control</span></button>
+    <button class="nav" data-page="train"><em>02</em><span>Train AI</span></button>
+    <button class="nav" data-page="classify"><em>03</em><span>Classification</span></button>
+    <button class="nav" data-page="cluster"><em>04</em><span>Clustering</span></button>
+    <button class="nav" data-page="dataset"><em>05</em><span>Planet Dataset</span></button>
+    <button class="nav" data-page="theory"><em>06</em><span>AI Theory</span></button>
+  </nav>
+  <div class="sidebottom"><span>MODEL</span><b>KNN + K-MEANS</b><small>Scientific demo system</small></div>
 </aside>
+
 <main>
-<header><div><span class="crumb">AI STORE / <b id="crumb">ЗЕРТХАНА</b></span><h1 id="title">AI роботты дүкенде оқыту</h1></div><div class="header-chip"><i></i> Модель дайын</div></header>
+<header>
+  <div><span class="eyebrow">ASTRA / <b id="crumb">MISSION CONTROL</b></span><h1 id="pageTitle">AI Space Research Laboratory</h1></div>
+  <div class="topright"><div class="pulse"></div><span>MODEL READY</span><b id="clock">00:00:00</b></div>
+</header>
 
-<section id="home" class="page active">
- <div class="hero">
-  <div class="hero-copy"><span class="kicker">ИНТЕРАКТИВТІ MACHINE LEARNING</span><h2>Тауарларды роботқа<br><em>түсінуді үйрет.</em></h2><p>Бұл виртуалды дүкенде сен AI роботқа мысалдар көрсетесің. Робот тауар категорияларын үйренеді, жаңа тауарды классификациялайды және белгісіз деректерден кластерлерді өзі табады.</p>
-  <div class="hero-actions"><button class="btn bright go" data-page="teach">Роботты оқыту →</button><button class="btn ghost go" data-page="theory">Жұмыс принципі</button></div></div>
-  <div class="robot-stage"><div class="orbit o1"></div><div class="orbit o2"></div><div class="robot"><div class="antenna"></div><div class="face"><span class="eye"></span><span class="eye"></span><div class="mouth"></div></div><div class="body">AI</div></div><div class="float f1">KNN<br><b>Classification</b></div><div class="float f2">K-Means<br><b>Clustering</b></div><div class="float f3">DATA<br><b id="heroCount">0 samples</b></div></div>
- </div>
- <div class="metrics"><article><span>ОҚУ ЖАДЫ</span><b id="mExamples">0</b><small>белгіленген мысал</small></article><article><span>КАТЕГОРИЯ</span><b id="mCats">0</b><small>AI білетін класс</small></article><article><span>КЛАСТЕР</span><b>3</b><small>автоматты сегмент</small></article><article><span>AI КҮЙІ</span><b class="ready">READY</b><small>есептеуге дайын</small></article></div>
- <div class="flow"><div><strong>01</strong><b>Мысал көрсет</b><p>Тауар параметрін және дұрыс категориясын бер.</p></div><i>→</i><div><strong>02</strong><b>AI үйренеді</b><p>Робот белгіленген мысалдарды жадында сақтайды.</p></div><i>→</i><div><strong>03</strong><b>Тексер</b><p>Жаңа тауар беріп, категория болжамын ал.</p></div><i>→</i><div><strong>04</strong><b>Топтастыр</b><p>AI категориясыз тауарларды ұқсастығына қарай бөледі.</p></div></div>
+<section class="page active" id="home">
+  <div class="hero">
+    <div class="heroText">
+      <span class="tag">INTERACTIVE MACHINE LEARNING MISSION</span>
+      <h2>Teach AI to<br><span>understand worlds.</span></h2>
+      <p>Белгісіз ғаламшарларды зертте. ASTRA роботын үйрет, жаңа объектілерді классификацияла және K-Means көмегімен ғарыш деректеріндегі жасырын кластерлерді тап.</p>
+      <div class="actions"><button class="primary jump" data-page="train">START MISSION <b>→</b></button><button class="secondary jump" data-page="theory">HOW AI WORKS</button></div>
+      <div class="heroStats"><div><b id="planetCount">24</b><span>PLANETS</span></div><div><b>5</b><span>KNOWN CLASSES</span></div><div><b>4</b><span>AI CLUSTERS</span></div></div>
+    </div>
+    <div class="spaceScene">
+      <div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="orbit orbit3"></div>
+      <div class="planet bigPlanet"><div class="planetGlow"></div><div class="land l1"></div><div class="land l2"></div><div class="land l3"></div></div>
+      <div class="moon"></div>
+      <div class="scanner"></div>
+      <div class="hud h1"><span>OBJECT</span><b>EXO-247</b><small>SCANNING...</small></div>
+      <div class="hud h2"><span>ATMOSPHERE</span><b>78%</b><small>STABLE</small></div>
+      <div class="hud h3"><span>AI SIGNAL</span><b>99.7%</b><small>CONNECTED</small></div>
+    </div>
+  </div>
+  <div class="missionFlow">
+    <article><span>MISSION 01</span><div class="ico">✦</div><h3>Train ASTRA</h3><p>Дұрыс жауабы бар планеталарды көрсетіп, AI жадына жаңа мысалдар қос.</p><button class="textBtn jump" data-page="train">OPEN LAB →</button></article>
+    <article><span>MISSION 02</span><div class="ico">◎</div><h3>Classification</h3><p>Жаңа планетаның параметрлері бойынша оның белгілі класын AI арқылы анықта.</p><button class="textBtn jump" data-page="classify">RUN MODEL →</button></article>
+    <article><span>MISSION 03</span><div class="ico">⌁</div><h3>Clustering</h3><p>Категорияларды жасыр. AI объектілерді ұқсастығына қарай өздігінен топтастырсын.</p><button class="textBtn jump" data-page="cluster">DISCOVER →</button></article>
+  </div>
 </section>
 
-<section id="teach" class="page">
- <div class="intro"><span class="kicker dark">1-КЕЗЕҢ • SUPERVISED LEARNING</span><h2>Роботқа дұрыс мысалдарды көрсет</h2><p>Мұнда мұғалім — сен. Тауардың нақты категориясын көрсеткен сайын AI-дың оқу жиыны көбейеді.</p></div>
- <div class="two">
-  <article class="card form"><div class="cardtop"><span class="num">01</span><div><h3>Оқу мысалын қосу</h3><p>Белгіленген дерек</p></div></div>
-   <label>Тауар атауы<input id="tName" placeholder="Мысалы: Сымсыз құлаққап"></label>
-   <label>Дұрыс категория<select id="tCat"></select></label>
-   <div class="row"><label>Бағасы, ₸<input id="tPrice" type="number" value="45000"></label><label>Рейтинг<input id="tRating" type="number" step=".1" min="1" max="5" value="4.6"></label></div>
-   <label>Сатылым саны<input id="tSales" type="number" value="350"></label>
-   <button class="btn primary full" id="teachBtn">+ AI жадына үйрету</button>
-  </article>
-  <article class="card brain"><div class="brain-head"><div class="mini-bot">AI</div><div><small>РОБОТ ЖАДЫ</small><h3 id="brainStatus">Оқу деректері дайын</h3></div></div>
-   <div class="memorybar"><div id="memoryFill"></div></div><div class="memorymeta"><span>Үйренген мысал</span><b id="memoryCount">0</b></div>
-   <div id="catMemory" class="catmemory"></div>
-   <div class="terminal" id="terminal"><span>› system: training dataset loaded</span><span>› model: KNN classifier ready</span><span>› waiting for new labeled sample...</span></div>
-  </article>
- </div>
+<section class="page" id="train">
+  <div class="sectionIntro"><span>MISSION 01 / SUPERVISED LEARNING</span><h2>Train the ASTRA AI</h2><p>AI-ға параметрлері және дұрыс класы белгілі ғаламшарды көрсет. Әр жаңа мысал модельдің оқу жиынына қосылады.</p></div>
+  <div class="grid2">
+    <div class="panel">
+      <div class="panelTitle"><div class="step">01</div><div><span>TRAINING INPUT</span><h3>New labeled planet</h3></div></div>
+      <label>Planet designation<input id="tName" value="KEPLER-X9"></label>
+      <div class="cols"><label>Temperature °C<input id="tTemp" type="number" value="18"></label><label>Gravity g<input id="tGravity" type="number" step=".1" value="1.1"></label></div>
+      <div class="cols"><label>Water %<input id="tWater" type="number" value="62"></label><label>Atmosphere %<input id="tAtmo" type="number" value="81"></label></div>
+      <label>Radiation level<input id="tRad" type="number" value="14"></label>
+      <label>Correct class<select id="tClass"><option>Earth-like</option><option>Ice world</option><option>Desert world</option><option>Volcanic</option><option>Gas giant</option></select></label>
+      <button class="primary wide" id="trainBtn">TEACH ASTRA AI <b>+</b></button>
+    </div>
+    <div class="panel darkPanel">
+      <div class="brainTop"><div class="aiOrb">AI<div></div></div><div><span>ASTRA NEURAL MEMORY</span><h3 id="trainState">Training system ready</h3></div></div>
+      <div class="memory"><div><span>TRAINING MEMORY</span><b id="memoryNum">24 / 50</b></div><div class="bar"><i id="memoryBar"></i></div></div>
+      <div id="classMemory" class="classMemory"></div>
+      <div class="terminal" id="terminal"><p><i>SYS</i> dataset initialized</p><p><i>AI</i> feature normalization complete</p><p><i>KNN</i> classifier waiting for labeled sample...</p><span class="cursor">_</span></div>
+    </div>
+  </div>
 </section>
 
-<section id="classify" class="page">
- <div class="intro"><span class="kicker dark">2-КЕЗЕҢ • CLASSIFICATION</span><h2>AI жаңа тауарды тани ала ма?</h2><p>Категорияны айтпаймыз. Робот үйренген мысалдарына қарап жаңа тауардың класын өзі болжайды.</p></div>
- <div class="two">
-  <article class="card form"><div class="cardtop"><span class="num">02</span><div><h3>Белгісіз тауар</h3><p>Категориясы жасырылған</p></div></div>
-   <label>Тауар атауы<input id="cName" value="Жаңа смарт сағат"></label>
-   <div class="row"><label>Бағасы, ₸<input id="cPrice" type="number" value="65000"></label><label>Рейтинг<input id="cRating" type="number" step=".1" value="4.6"></label></div>
-   <label>Сатылым саны<input id="cSales" type="number" value="330"></label>
-   <button class="btn primary full" id="predict">AI-дан сұрау →</button>
-  </article>
-  <article class="card prediction"><div class="scan"><div class="scanline"></div><div class="mini-bot big">AI</div></div><small>AI БОЛЖАМЫ</small><h2 id="predCat">Тексеруге дайын</h2><p id="predText">Параметрлерді енгізіп, AI-дан сұраңыз.</p><div class="confidence"><span>Сенімділік</span><b id="conf">—</b></div><div class="confbar"><div id="confFill"></div></div><div id="neighbors" class="neighbors"></div></article>
- </div>
- <article class="card formula"><b>KNN қалай шешеді?</b><span>Нормализация</span><i>→</i><span>Қашықтық</span><i>→</i><span>5 жақын көрші</span><i>→</i><span>Көпшілік дауысы</span><i>→</i><strong>Класс</strong></article>
+<section class="page" id="classify">
+  <div class="sectionIntro"><span>MISSION 02 / CLASSIFICATION</span><h2>Identify an unknown world</h2><p>Бұл жолы AI-ға дұрыс класс берілмейді. ASTRA бұрын үйренген объектілердің ішінен ең ұқсас көршілерді тауып, KNN арқылы болжам жасайды.</p></div>
+  <div class="grid2">
+    <div class="panel">
+      <div class="panelTitle"><div class="step">02</div><div><span>UNKNOWN OBJECT</span><h3>Planet scanner</h3></div></div>
+      <label>Object ID<input id="cName" value="EXO-247"></label>
+      <div class="cols"><label>Temperature °C<input id="cTemp" type="number" value="22"></label><label>Gravity g<input id="cGravity" type="number" step=".1" value="1"></label></div>
+      <div class="cols"><label>Water %<input id="cWater" type="number" value="68"></label><label>Atmosphere %<input id="cAtmo" type="number" value="84"></label></div>
+      <label>Radiation level<input id="cRad" type="number" value="12"></label>
+      <button class="primary wide" id="classifyBtn">ANALYZE WITH AI →</button>
+    </div>
+    <div class="panel resultPanel">
+      <div class="scanPlanet"><div class="pMini"></div><div class="scanBeam"></div><div class="rings"></div></div>
+      <span class="resultLabel">ASTRA CLASSIFICATION</span>
+      <h2 id="resultClass">READY TO SCAN</h2>
+      <p id="resultDesc">Enter planetary parameters and start AI analysis.</p>
+      <div class="confidence"><div><span>MODEL CONFIDENCE</span><b id="confidence">—</b></div><div class="bar"><i id="confBar"></i></div></div>
+      <div id="neighbors" class="neighbors"></div>
+    </div>
+  </div>
 </section>
 
-<section id="cluster" class="page">
- <div class="intro split"><div><span class="kicker dark">3-КЕЗЕҢ • UNSUPERVISED LEARNING</span><h2>AI жасырын топтарды өзі табады</h2><p>Бұл жерде категориялар қолданылмайды. K-Means баға, рейтинг және сатылым ұқсастығына қарап 3 табиғи кластер құрады.</p></div><button class="btn primary" id="runCluster">↻ K-Means іске қосу</button></div>
- <div class="clusterstats" id="clusterStats"></div>
- <article class="card chartcard"><div class="charthead"><div><h3>AI сегментация картасы</h3><p>X = баға, Y = сатылым. Әр нүкте — тауар.</p></div><span class="live">● LIVE MODEL</span></div><div class="chart"><canvas id="scatter"></canvas></div></article>
- <div class="clusterinfo" id="clusterInfo"></div>
+<section class="page" id="cluster">
+  <div class="sectionIntro split"><div><span>MISSION 03 / UNSUPERVISED LEARNING</span><h2>Discover hidden planetary groups</h2><p>Белгілі кластарды уақытша ұмытамыз. K-Means тек сандық параметрлерді көріп, планеталарды ұқсастықтарына қарай 4 топқа бөледі.</p></div><button class="primary" id="clusterBtn">RUN K-MEANS ↻</button></div>
+  <div class="clusterCards" id="clusterCards"></div>
+  <div class="panel chartPanel">
+    <div class="chartTitle"><div><span>AI DEEP SPACE MAP</span><h3>Planet similarity projection</h3></div><div class="legendNote"><i></i> LIVE CLUSTER MODEL</div></div>
+    <div class="chartWrap"><canvas id="clusterChart"></canvas></div>
+  </div>
+  <div class="clusterExplain" id="clusterExplain"></div>
 </section>
 
-<section id="data" class="page">
- <div class="intro"><span class="kicker dark">DATASET</span><h2>AI оқитын деректер</h2><p>Бұл кестедегі белгіленген мысалдар классификация үшін оқу жиыны ретінде пайдаланылады.</p></div>
- <article class="card tablecard"><div class="tools"><input id="search" placeholder="Тауарды іздеу..."><span id="dataCount"></span></div><div class="tablewrap"><table><thead><tr><th>Тауар</th><th>Белгіленген класс</th><th>Баға</th><th>Рейтинг</th><th>Сатылым</th><th>AI кластері</th></tr></thead><tbody id="rows"></tbody></table></div></article>
+<section class="page" id="dataset">
+  <div class="sectionIntro"><span>SCIENTIFIC DATASET</span><h2>Planetary training database</h2><p>ASTRA классификация кезінде осы белгіленген объектілерді пайдаланады. Кластеризация кезінде Class бағаны алгоритмге берілмейді.</p></div>
+  <div class="panel tablePanel">
+    <div class="tableTools"><input id="search" placeholder="Search planet..."><div><span>DATASET SIZE</span><b id="dataSize">24 OBJECTS</b></div></div>
+    <div class="tableScroll"><table><thead><tr><th>OBJECT</th><th>KNOWN CLASS</th><th>TEMP</th><th>GRAVITY</th><th>WATER</th><th>ATMOSPHERE</th><th>RADIATION</th><th>AI CLUSTER</th></tr></thead><tbody id="dataRows"></tbody></table></div>
+  </div>
 </section>
 
-<section id="theory" class="page">
- <div class="intro"><span class="kicker dark">ML THEORY</span><h2>Классификация мен кластеризация айырмашылығы</h2><p>Екі алгоритм де бір дүкен деректерін қолданады, бірақ шешетін міндеттері бөлек.</p></div>
- <div class="compare">
-  <article class="card theory blue"><span>SUPERVISED</span><h3>Классификация</h3><p>AI-ға алдын ала дұрыс жауаптары бар мысалдар беріледі. Мақсат — жаңа объектінің қай белгілі класқа жататынын анықтау.</p><div class="example"><small>КІРІС</small><b>65 000 ₸ • 4.6 ★ • 330 сатылым</b><i>↓</i><small>AI БОЛЖАМЫ</small><strong>Электроника</strong></div><ul><li>Дұрыс категория алдын ала белгілі</li><li>Бұл жобада KNN қолданылады</li><li>Нәтиже — категория атауы</li></ul></article>
-  <article class="card theory purple"><span>UNSUPERVISED</span><h3>Кластеризация</h3><p>AI-ға дұрыс жауап берілмейді. Ол объектілер арасындағы ұқсастықты өзі тауып, табиғи топтарға бөледі.</p><div class="example"><small>КІРІС</small><b>Барлық тауар параметрлері</b><i>↓</i><small>AI НӘТИЖЕСІ</small><strong>3 ЖАСЫРЫН ТОП</strong></div><ul><li>Алдын ала категория қажет емес</li><li>Бұл жобада K-Means қолданылады</li><li>Нәтиже — ұқсас объектілер тобы</li></ul></article>
- </div>
- <article class="card conclusion"><div class="mini-bot">AI</div><div><h3>Неге дүкен мысалы ыңғайлы?</h3><p>Электрондық саудада тауар категориясын автоматты анықтау каталогты реттеуге көмектеседі, ал кластеризация ассортиментті баға мен сұраныс сипаттамалары бойынша зерттеуге мүмкіндік береді. Осы интерактивті зертхана екі ML тәсілінің логикалық айырмашылығын тәжірибе арқылы көрсетеді.</p></div></article>
+<section class="page" id="theory">
+  <div class="sectionIntro"><span>AI THEORY / PROJECT LOGIC</span><h2>Two different ways for AI to learn</h2><p>Бұл жобаның ғылыми өзегі — supervised және unsupervised machine learning тәсілдерінің айырмашылығын бір деректер жиынында көрсету.</p></div>
+  <div class="theoryGrid">
+    <div class="panel theoryCard cyan">
+      <div class="theoryNo">01</div><span>SUPERVISED LEARNING</span><h2>Classification</h2><p>Алгоритмге параметрлермен бірге дұрыс жауаптар да беріледі. Жаңа объект келгенде AI бұрынғы мысалдарға сүйеніп оның класын болжайды.</p>
+      <div class="logic"><small>INPUT</small><b>Temperature + Water + Gravity + Atmosphere + Radiation</b><i>↓</i><strong>KNN MODEL</strong><i>↓</i><em>EARTH-LIKE</em></div>
+      <ul><li>Training labels are known</li><li>K = 5 nearest neighbors</li><li>Output is one known class</li></ul>
+    </div>
+    <div class="panel theoryCard violet">
+      <div class="theoryNo">02</div><span>UNSUPERVISED LEARNING</span><h2>Clustering</h2><p>Алгоритмге класс атаулары берілмейді. K-Means объектілер арасындағы математикалық ұқсастықты тауып, оларды автоматты түрде топтарға бөледі.</p>
+      <div class="logic"><small>INPUT</small><b>Unlabeled planetary parameters</b><i>↓</i><strong>K-MEANS MODEL</strong><i>↓</i><em>4 HIDDEN GROUPS</em></div>
+      <ul><li>No labels during clustering</li><li>K = 4 centroids</li><li>Output is similarity groups</li></ul>
+    </div>
+  </div>
+  <div class="panel finalNote"><div class="aiOrb small">AI</div><div><span>SCIENTIFIC CONCLUSION</span><h3>One dataset. Two machine learning tasks.</h3><p>Classification answers “Бұл объект қай белгілі класқа жатады?”, ал clustering “Бұл объектілер табиғи түрде қандай топтарға бөлінеді?” деген сұраққа жауап береді. Сайт екі процесті интерактивті түрде салыстыруға мүмкіндік береді.</p></div></div>
 </section>
 </main>
-<div class="toast" id="toast">AI жаңа мысалды үйренді</div>
-</div>
+<div id="toast" class="toast">ASTRA learned a new object</div>
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>

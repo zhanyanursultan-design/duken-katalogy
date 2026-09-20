@@ -1,11 +1,16 @@
-# QazShop AI Lab
-Интерактивті дүкен негізіндегі Machine Learning зертханасы.
+# AI SPACE LAB
 
-Негізгі функциялар:
-- AI роботты белгіленген тауар мысалдарымен оқыту
-- KNN классификациясы
-- K-Means кластеризациясы
-- интерактивті визуализация
-- GitHub Pages-пен жұмыс істейді
+Интерактивті Machine Learning оқу жобасы.
 
-GitHub-та ескі index.html, style.css, app.js файлдарын осы үш жаңа файлмен ауыстырыңыз.
+## Негізгі функциялар
+- ASTRA AI роботын жаңа белгіленген планеталармен оқыту
+- KNN арқылы жаңа планетаны классификациялау
+- K-Means арқылы 4 кластерді автоматты табу
+- Интерактивті кластер графигі
+- Planet Dataset
+- Classification және Clustering теориялық салыстыруы
+- Responsive sci-fi интерфейс
+
+## GitHub Pages
+Репозиторий түбіріне `index.html`, `style.css`, `app.js` файлдарын жүктеңіз.
+Settings -> Pages -> Deploy from a branch -> main -> /(root).
