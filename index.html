@@ -1,143 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="kk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI SPACE LAB</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartStore Robot AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="stars"></canvas>
-<div class="noise"></div>
-<aside class="sidebar">
-  <div class="brand"><div class="brandmark">A</div><div><b>AI SPACE</b><span>RESEARCH LAB</span></div></div>
-  <div class="status"><i></i><div><b>ASTRA AI ONLINE</b><span id="sideMemory">24 training samples</span></div></div>
+<div class="app">
+<aside>
+  <div class="brand"><div class="botlogo">R</div><div><b>STORE ROBOT</b><small>AI LEARNING LAB</small></div></div>
+  <div class="online"><i></i><div><b>ROBOT ONLINE</b><span id="memSide">0 тәжірибе</span></div></div>
   <nav>
-    <button class="nav active" data-page="home"><em>01</em><span>Mission Control</span></button>
-    <button class="nav" data-page="train"><em>02</em><span>Train AI</span></button>
-    <button class="nav" data-page="classify"><em>03</em><span>Classification</span></button>
-    <button class="nav" data-page="cluster"><em>04</em><span>Clustering</span></button>
-    <button class="nav" data-page="dataset"><em>05</em><span>Planet Dataset</span></button>
-    <button class="nav" data-page="theory"><em>06</em><span>AI Theory</span></button>
+    <button class="nav active" data-page="home">⌂ <span>Басты бет</span></button>
+    <button class="nav" data-page="reinforce">↻ <span>Оқыту арқылы үйрету</span></button>
+    <button class="nav" data-page="semi">◐ <span>Жартылай оқыту</span></button>
+    <button class="nav" data-page="compare">⇄ <span>Салыстыру</span></button>
+    <button class="nav" data-page="theory">◇ <span>Теория</span></button>
   </nav>
-  <div class="sidebottom"><span>MODEL</span><b>KNN + K-MEANS</b><small>Scientific demo system</small></div>
+  <div class="sidefoot"><small>SMART STORE AI</small><p>Интерактивті оқу жобасы</p></div>
 </aside>
-
 <main>
-<header>
-  <div><span class="eyebrow">ASTRA / <b id="crumb">MISSION CONTROL</b></span><h1 id="pageTitle">AI Space Research Laboratory</h1></div>
-  <div class="topright"><div class="pulse"></div><span>MODEL READY</span><b id="clock">00:00:00</b></div>
-</header>
+<header><div><span class="crumb">SMART STORE / <b id="crumb">БАСТЫ БЕТ</b></span><h1 id="title">Дүкендегі роботты машиналық оқыту</h1></div><div class="chip"><i></i> AI жүйесі дайын</div></header>
 
-<section class="page active" id="home">
-  <div class="hero">
-    <div class="heroText">
-      <span class="tag">INTERACTIVE MACHINE LEARNING MISSION</span>
-      <h2>Teach AI to<br><span>understand worlds.</span></h2>
-      <p>Белгісіз ғаламшарларды зертте. ASTRA роботын үйрет, жаңа объектілерді классификацияла және K-Means көмегімен ғарыш деректеріндегі жасырын кластерлерді тап.</p>
-      <div class="actions"><button class="primary jump" data-page="train">START MISSION <b>→</b></button><button class="secondary jump" data-page="theory">HOW AI WORKS</button></div>
-      <div class="heroStats"><div><b id="planetCount">24</b><span>PLANETS</span></div><div><b>5</b><span>KNOWN CLASSES</span></div><div><b>4</b><span>AI CLUSTERS</span></div></div>
-    </div>
-    <div class="spaceScene">
-      <div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="orbit orbit3"></div>
-      <div class="planet bigPlanet"><div class="planetGlow"></div><div class="land l1"></div><div class="land l2"></div><div class="land l3"></div></div>
-      <div class="moon"></div>
-      <div class="scanner"></div>
-      <div class="hud h1"><span>OBJECT</span><b>EXO-247</b><small>SCANNING...</small></div>
-      <div class="hud h2"><span>ATMOSPHERE</span><b>78%</b><small>STABLE</small></div>
-      <div class="hud h3"><span>AI SIGNAL</span><b>99.7%</b><small>CONNECTED</small></div>
-    </div>
+<section id="home" class="page active">
+ <div class="hero">
+  <div class="heroCopy">
+   <span class="kicker">INTERACTIVE AI EDUCATION</span>
+   <h2>Дүкендегі робот<br><em>қалай үйренеді?</em></h2>
+   <p>Бір робот, екі оқыту тәсілі. Бірінші тәжірибеде робот әрекет жасап, сыйақы мен жаза арқылы тауарды дұрыс орналастыруды үйренеді. Екінші тәжірибеде аз белгіленген және көп белгіленбеген деректер арқылы тауарларды тануды үйренеді.</p>
+   <div class="heroBtns"><button class="btn cyan go" data-page="reinforce">1. ROBOT TRAINING →</button><button class="btn outline go" data-page="semi">2. SEMI-SUPERVISED →</button></div>
   </div>
-  <div class="missionFlow">
-    <article><span>MISSION 01</span><div class="ico">✦</div><h3>Train ASTRA</h3><p>Дұрыс жауабы бар планеталарды көрсетіп, AI жадына жаңа мысалдар қос.</p><button class="textBtn jump" data-page="train">OPEN LAB →</button></article>
-    <article><span>MISSION 02</span><div class="ico">◎</div><h3>Classification</h3><p>Жаңа планетаның параметрлері бойынша оның белгілі класын AI арқылы анықта.</p><button class="textBtn jump" data-page="classify">RUN MODEL →</button></article>
-    <article><span>MISSION 03</span><div class="ico">⌁</div><h3>Clustering</h3><p>Категорияларды жасыр. AI объектілерді ұқсастығына қарай өздігінен топтастырсын.</p><button class="textBtn jump" data-page="cluster">DISCOVER →</button></article>
+  <div class="scene">
+    <div class="shelf"><div class="srow"><span class="milk">СҮТ</span><span class="bread">НАН</span><span class="apple">●</span></div><div class="srow"><span class="box">CEREAL</span><span class="bottle"></span><span class="apple">●</span></div></div>
+    <div class="robot"><div class="antenna"></div><div class="head"><i></i><i></i><b></b></div><div class="body">AI</div><div class="arm a1"></div><div class="arm a2"></div></div>
+    <div class="scanline"></div><div class="hud h1"><small>ACTION</small><b>SCAN PRODUCT</b></div><div class="hud h2"><small>LEARNING</small><b>ACTIVE</b></div>
   </div>
+ </div>
+ <div class="stats"><article><span>ӘДІС 01</span><b>Reward</b><small>Сыйақы және жаза</small></article><article><span>ӘДІС 02</span><b>Semi</b><small>Белгіленген + белгіленбеген дерек</small></article><article><span>РОБОТ</span><b id="homeScore">0</b><small>жиналған сыйақы</small></article><article><span>AI MEMORY</span><b id="homeMemory">12</b><small>белгіленген мысал</small></article></div>
+ <div class="flow"><div><strong>01</strong><b>Бақылау</b><p>Робот ортаның жағдайын көреді.</p></div><i>→</i><div><strong>02</strong><b>Әрекет</b><p>Тауарды бір сөреге орналастырады.</p></div><i>→</i><div><strong>03</strong><b>Бағалау</b><p>Дұрыс әрекетке сыйақы, қатеге жаза.</p></div><i>→</i><div><strong>04</strong><b>Үйрену</b><p>Келесі әрекетін тәжірибеге қарай жақсартады.</p></div></div>
 </section>
 
-<section class="page" id="train">
-  <div class="sectionIntro"><span>MISSION 01 / SUPERVISED LEARNING</span><h2>Train the ASTRA AI</h2><p>AI-ға параметрлері және дұрыс класы белгілі ғаламшарды көрсет. Әр жаңа мысал модельдің оқу жиынына қосылады.</p></div>
-  <div class="grid2">
-    <div class="panel">
-      <div class="panelTitle"><div class="step">01</div><div><span>TRAINING INPUT</span><h3>New labeled planet</h3></div></div>
-      <label>Planet designation<input id="tName" value="KEPLER-X9"></label>
-      <div class="cols"><label>Temperature °C<input id="tTemp" type="number" value="18"></label><label>Gravity g<input id="tGravity" type="number" step=".1" value="1.1"></label></div>
-      <div class="cols"><label>Water %<input id="tWater" type="number" value="62"></label><label>Atmosphere %<input id="tAtmo" type="number" value="81"></label></div>
-      <label>Radiation level<input id="tRad" type="number" value="14"></label>
-      <label>Correct class<select id="tClass"><option>Earth-like</option><option>Ice world</option><option>Desert world</option><option>Volcanic</option><option>Gas giant</option></select></label>
-      <button class="primary wide" id="trainBtn">TEACH ASTRA AI <b>+</b></button>
+<section id="reinforce" class="page">
+ <div class="intro"><span class="kicker dark">ТӘЖІРИБЕ 01 / REINFORCEMENT LEARNING</span><h2>Роботқа тауарларды орналастыруды үйрет</h2><p>Робот дайын жауапты жаттамайды. Ол әрекет жасап көреді, нәтижесін бағалайды және жинаған тәжірибесі арқылы дұрыс сөрені біртіндеп үйренеді.</p></div>
+ <div class="grid2">
+  <article class="card">
+   <div class="cardHead"><span>01</span><div><small>TRAINING ARENA</small><h3>Дүкен сөрелері</h3></div></div>
+   <div class="productSelect"><label>Роботқа тауар бер<select id="rlProduct"><option value="milk">Сүт</option><option value="bread">Нан</option><option value="apple">Алма</option></select></label></div>
+   <div class="arena">
+    <div class="miniRobot"><div>AI</div><small id="held">СҮТ</small></div>
+    <div class="shelves">
+      <button class="shelfBtn" data-shelf="fruit"><b>🍎</b><span>Жемістер</span></button>
+      <button class="shelfBtn" data-shelf="bread"><b>🍞</b><span>Нан өнімдері</span></button>
+      <button class="shelfBtn" data-shelf="milk"><b>🥛</b><span>Сүт өнімдері</span></button>
     </div>
-    <div class="panel darkPanel">
-      <div class="brainTop"><div class="aiOrb">AI<div></div></div><div><span>ASTRA NEURAL MEMORY</span><h3 id="trainState">Training system ready</h3></div></div>
-      <div class="memory"><div><span>TRAINING MEMORY</span><b id="memoryNum">24 / 50</b></div><div class="bar"><i id="memoryBar"></i></div></div>
-      <div id="classMemory" class="classMemory"></div>
-      <div class="terminal" id="terminal"><p><i>SYS</i> dataset initialized</p><p><i>AI</i> feature normalization complete</p><p><i>KNN</i> classifier waiting for labeled sample...</p><span class="cursor">_</span></div>
-    </div>
-  </div>
+   </div>
+   <p class="hint">Тауарды қай сөреге қою керегін таңда. Робот нәтиже арқылы үйренеді.</p>
+  </article>
+  <article class="card darkCard">
+   <div class="robotStatus"><div class="brain">AI</div><div><small>ROBOT LEARNING STATE</small><h3 id="rlState">Әрекетті күтіп тұр...</h3></div></div>
+   <div class="reward"><div><span>ЖАЛПЫ СЫЙАҚЫ</span><b id="reward">0</b></div><div><span>ӘРЕКЕТ САНЫ</span><b id="attempts">0</b></div><div><span>ДҰРЫС</span><b id="correct">0</b></div></div>
+   <div class="progress"><div><span>Оқу прогресі</span><b id="rlPercent">0%</b></div><div class="bar"><i id="rlBar"></i></div></div>
+   <div class="terminal" id="rlTerminal"><p>› environment initialized</p><p>› reward policy: correct +10 / wrong -5</p><p>› waiting for robot action...</p></div>
+   <button class="btn cyan full" id="autoTrain">AUTO TRAIN × 20</button>
+  </article>
+ </div>
+ <article class="card algo"><b>Алгоритм</b><span>Жағдайды бақылау</span><i>→</i><span>Әрекет жасау</span><i>→</i><span>Нәтижені бағалау</span><i>→</i><span>Сыйақы / жаза</span><i>→</i><strong>Әрекетті жақсарту</strong></article>
 </section>
 
-<section class="page" id="classify">
-  <div class="sectionIntro"><span>MISSION 02 / CLASSIFICATION</span><h2>Identify an unknown world</h2><p>Бұл жолы AI-ға дұрыс класс берілмейді. ASTRA бұрын үйренген объектілердің ішінен ең ұқсас көршілерді тауып, KNN арқылы болжам жасайды.</p></div>
-  <div class="grid2">
-    <div class="panel">
-      <div class="panelTitle"><div class="step">02</div><div><span>UNKNOWN OBJECT</span><h3>Planet scanner</h3></div></div>
-      <label>Object ID<input id="cName" value="EXO-247"></label>
-      <div class="cols"><label>Temperature °C<input id="cTemp" type="number" value="22"></label><label>Gravity g<input id="cGravity" type="number" step=".1" value="1"></label></div>
-      <div class="cols"><label>Water %<input id="cWater" type="number" value="68"></label><label>Atmosphere %<input id="cAtmo" type="number" value="84"></label></div>
-      <label>Radiation level<input id="cRad" type="number" value="12"></label>
-      <button class="primary wide" id="classifyBtn">ANALYZE WITH AI →</button>
-    </div>
-    <div class="panel resultPanel">
-      <div class="scanPlanet"><div class="pMini"></div><div class="scanBeam"></div><div class="rings"></div></div>
-      <span class="resultLabel">ASTRA CLASSIFICATION</span>
-      <h2 id="resultClass">READY TO SCAN</h2>
-      <p id="resultDesc">Enter planetary parameters and start AI analysis.</p>
-      <div class="confidence"><div><span>MODEL CONFIDENCE</span><b id="confidence">—</b></div><div class="bar"><i id="confBar"></i></div></div>
-      <div id="neighbors" class="neighbors"></div>
-    </div>
-  </div>
+<section id="semi" class="page">
+ <div class="intro"><span class="kicker dark">ТӘЖІРИБЕ 02 / SEMI-SUPERVISED LEARNING</span><h2>Аз белгіленген дерекпен тауарларды тану</h2><p>Мұнда барлық суретті адам қолмен белгілемейді. Аз ғана белгіленген мысал AI-ға бастапқы білім береді, ал көп белгіленбеген дерек сол білімді кеңейтуге қолданылады.</p></div>
+ <div class="semiStats"><article><span>БАРЛЫҚ ДЕРЕК</span><b>1000</b><small>тауар суреті</small></article><article><span>БЕЛГІЛЕНГЕН</span><b id="labeledCount">100</b><small>адам берген жауап</small></article><article><span>БЕЛГІЛЕНБЕГЕН</span><b id="unlabeledCount">900</b><small>AI талдайтын дерек</small></article><article><span>CONFIDENCE</span><b id="semiConf">—</b><small>соңғы болжам</small></article></div>
+ <div class="grid2">
+  <article class="card">
+   <div class="cardHead"><span>02</span><div><small>LABELED TRAINING DATA</small><h3>AI-ға бастапқы білім беру</h3></div></div>
+   <div class="examples"><div>🍎<b>Алма</b><span>→ Жеміс</span></div><div>🍞<b>Нан</b><span>→ Нан өнімдері</span></div><div>🥛<b>Сүт</b><span>→ Сүт өнімі</span></div></div>
+   <div class="datasetBar"><div class="labeled">100 белгіленген</div><div class="unlabeled">900 белгіленбеген</div></div>
+   <p class="note">Алдымен модель белгіленген мысалдардан тауар белгілерін үйренеді.</p>
+  </article>
+  <article class="card scanCard">
+   <div class="scannerBox"><div id="scanEmoji">?</div><div class="laser"></div></div>
+   <small>UNLABELED PRODUCT</small><h3 id="semiResult">AI талдауға дайын</h3><p id="semiText">Белгіленбеген тауарды таңдаңыз.</p>
+   <select id="unknown"><option value="greenApple">🍏 Белгісіз объект A</option><option value="baguette">🥖 Белгісіз объект B</option><option value="yogurt">🥣 Белгісіз объект C</option></select>
+   <button class="btn purple full" id="analyze">AI-МЕН ТАЛДАУ →</button>
+   <div class="confidence"><div><span>AI сенімділігі</span><b id="confText">0%</b></div><div class="bar"><i id="confBar"></i></div></div>
+  </article>
+ </div>
+ <div class="semiFlow"><div><b>1</b><span>100 белгіленген дерек</span></div><i>+</i><div><b>2</b><span>900 белгіленбеген дерек</span></div><i>→</i><div><b>3</b><span>Модельді бастапқы оқыту</span></div><i>→</i><div><b>4</b><span>Pseudo-label жасау</span></div><i>→</i><div><b>5</b><span>Модельді жақсарту</span></div></div>
+ </section>
+
+<section id="compare" class="page">
+ <div class="intro"><span class="kicker dark">COMPARISON</span><h2>Екі оқыту тәсілінің айырмашылығы</h2><p>Екі жағдайда да дүкендегі робот үйренеді, бірақ оған берілетін кері байланыс пен дерек түрі әртүрлі.</p></div>
+ <div class="compare">
+  <article class="card compareCard cyanEdge"><span>REINFORCEMENT LEARNING</span><h2>Әрекет арқылы үйрену</h2><div class="bigIcon">🤖 → 📦 → 🗄️</div><p>Робот ортада әрекет етеді. Дұрыс әрекет сыйақы береді, қате әрекет жаза береді. Мақсат — ұзақ мерзімде ең көп сыйақы әкелетін әрекет стратегиясын табу.</p><ul><li>Дерек: жағдай және әрекет нәтижесі</li><li>Кері байланыс: сыйақы немесе жаза</li><li>Мысал: тауарды дұрыс сөреге қою</li><li>Нәтиже: жақсартылған әрекет стратегиясы</li></ul></article>
+  <article class="card compareCard purpleEdge"><span>SEMI-SUPERVISED LEARNING</span><h2>Аз белгімен көп деректен үйрену</h2><div class="bigIcon">100 ✓ + 900 ? → 🧠</div><p>Модель аз көлемдегі белгіленген деректен бастапқы заңдылықтарды үйренеді. Содан кейін белгіленбеген деректерге болжам жасап, сенімді нәтижелерді қосымша оқытуға қолдана алады.</p><ul><li>Дерек: белгіленген және белгіленбеген мысалдар</li><li>Кері байланыс: аз көлемдегі дұрыс label</li><li>Мысал: дүкен тауарларын суреттен тану</li><li>Нәтиже: тауар категориясын болжау</li></ul></article>
+ </div>
 </section>
 
-<section class="page" id="cluster">
-  <div class="sectionIntro split"><div><span>MISSION 03 / UNSUPERVISED LEARNING</span><h2>Discover hidden planetary groups</h2><p>Белгілі кластарды уақытша ұмытамыз. K-Means тек сандық параметрлерді көріп, планеталарды ұқсастықтарына қарай 4 топқа бөледі.</p></div><button class="primary" id="clusterBtn">RUN K-MEANS ↻</button></div>
-  <div class="clusterCards" id="clusterCards"></div>
-  <div class="panel chartPanel">
-    <div class="chartTitle"><div><span>AI DEEP SPACE MAP</span><h3>Planet similarity projection</h3></div><div class="legendNote"><i></i> LIVE CLUSTER MODEL</div></div>
-    <div class="chartWrap"><canvas id="clusterChart"></canvas></div>
-  </div>
-  <div class="clusterExplain" id="clusterExplain"></div>
-</section>
-
-<section class="page" id="dataset">
-  <div class="sectionIntro"><span>SCIENTIFIC DATASET</span><h2>Planetary training database</h2><p>ASTRA классификация кезінде осы белгіленген объектілерді пайдаланады. Кластеризация кезінде Class бағаны алгоритмге берілмейді.</p></div>
-  <div class="panel tablePanel">
-    <div class="tableTools"><input id="search" placeholder="Search planet..."><div><span>DATASET SIZE</span><b id="dataSize">24 OBJECTS</b></div></div>
-    <div class="tableScroll"><table><thead><tr><th>OBJECT</th><th>KNOWN CLASS</th><th>TEMP</th><th>GRAVITY</th><th>WATER</th><th>ATMOSPHERE</th><th>RADIATION</th><th>AI CLUSTER</th></tr></thead><tbody id="dataRows"></tbody></table></div>
-  </div>
-</section>
-
-<section class="page" id="theory">
-  <div class="sectionIntro"><span>AI THEORY / PROJECT LOGIC</span><h2>Two different ways for AI to learn</h2><p>Бұл жобаның ғылыми өзегі — supervised және unsupervised machine learning тәсілдерінің айырмашылығын бір деректер жиынында көрсету.</p></div>
-  <div class="theoryGrid">
-    <div class="panel theoryCard cyan">
-      <div class="theoryNo">01</div><span>SUPERVISED LEARNING</span><h2>Classification</h2><p>Алгоритмге параметрлермен бірге дұрыс жауаптар да беріледі. Жаңа объект келгенде AI бұрынғы мысалдарға сүйеніп оның класын болжайды.</p>
-      <div class="logic"><small>INPUT</small><b>Temperature + Water + Gravity + Atmosphere + Radiation</b><i>↓</i><strong>KNN MODEL</strong><i>↓</i><em>EARTH-LIKE</em></div>
-      <ul><li>Training labels are known</li><li>K = 5 nearest neighbors</li><li>Output is one known class</li></ul>
-    </div>
-    <div class="panel theoryCard violet">
-      <div class="theoryNo">02</div><span>UNSUPERVISED LEARNING</span><h2>Clustering</h2><p>Алгоритмге класс атаулары берілмейді. K-Means объектілер арасындағы математикалық ұқсастықты тауып, оларды автоматты түрде топтарға бөледі.</p>
-      <div class="logic"><small>INPUT</small><b>Unlabeled planetary parameters</b><i>↓</i><strong>K-MEANS MODEL</strong><i>↓</i><em>4 HIDDEN GROUPS</em></div>
-      <ul><li>No labels during clustering</li><li>K = 4 centroids</li><li>Output is similarity groups</li></ul>
-    </div>
-  </div>
-  <div class="panel finalNote"><div class="aiOrb small">AI</div><div><span>SCIENTIFIC CONCLUSION</span><h3>One dataset. Two machine learning tasks.</h3><p>Classification answers “Бұл объект қай белгілі класқа жатады?”, ал clustering “Бұл объектілер табиғи түрде қандай топтарға бөлінеді?” деген сұраққа жауап береді. Сайт екі процесті интерактивті түрде салыстыруға мүмкіндік береді.</p></div></div>
+<section id="theory" class="page">
+ <div class="intro"><span class="kicker dark">SCIENTIFIC THEORY</span><h2>Жобаның негізгі принциптері</h2><p>Сайт екі машиналық оқыту парадигмасын интерактивті тәжірибе арқылы түсіндіреді.</p></div>
+ <div class="theoryGrid">
+  <article class="card"><span class="number">01</span><h3>Оқыту арқылы үйрету</h3><p>Агент ортадан жағдайды алады, әрекет таңдайды, содан кейін reward алады. Осы сигнал болашақ әрекеттерді таңдауға әсер етеді.</p><div class="formula">State → Action → Reward → Update policy</div></article>
+  <article class="card"><span class="number">02</span><h3>Жартылай оқыту</h3><p>Белгіленген деректер саны аз болған кезде белгіленбеген мысалдар да пайдаланылады. Сенімді pseudo-label модельдің оқу жиынын кеңейте алады.</p><div class="formula">Labeled + Unlabeled → Model → Pseudo-label → Retrain</div></article>
+  <article class="card conclusion"><span class="number">03</span><h3>Дүкендегі робот мысалы</h3><p>Бір орта екі тәсілді түсіндіруге мүмкіндік береді: робот физикалық әрекетті сыйақы арқылы үйренеді және тауарды тануды белгіленген әрі белгіленбеген деректер арқылы меңгереді.</p><div class="formula">Robot + Store + Data = Interactive AI Lab</div></article>
+ </div>
 </section>
 </main>
-<div id="toast" class="toast">ASTRA learned a new object</div>
+<div class="toast" id="toast">AI жаңартылды</div>
+</div>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>
