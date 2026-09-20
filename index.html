@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartStore AI — Классификация және кластеризация</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">S</span><div><b>SmartStore</b><small>AI Analytics</small></div></div>
+    <nav>
+      <button class="nav active" data-page="dashboard">⌂ <span>Басты бет</span></button>
+      <button class="nav" data-page="catalog">▦ <span>Каталог</span></button>
+      <button class="nav" data-page="classification">◎ <span>Классификация</span></button>
+      <button class="nav" data-page="clustering">◉ <span>Кластеризация</span></button>
+      <button class="nav" data-page="analytics">⌁ <span>Аналитика</span></button>
+      <button class="nav" data-page="about">ⓘ <span>Жоба туралы</span></button>
+    </nav>
+    <div class="side-note"><b>ML жүйесі</b><p>KNN классификациясы және K-Means кластеризациясы браузерде орындалады.</p></div>
+  </aside>
+
+  <main>
+    <header>
+      <div><h1 id="pageTitle">Басқару панелі</h1><p id="pageSub">Дүкен деректерін интеллектуалды талдау жүйесі</p></div>
+      <div class="status"><span></span> ML жүйесі белсенді</div>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <div class="hero">
+        <div><span class="eyebrow">MACHINE LEARNING PROJECT</span><h2>Дүкен тауарларын ақылды талдау</h2><p>Тауарларды автоматты классификациялаңыз, K-Means арқылы ұқсас топтарға бөліңіз және сатылым деректерін визуалды түрде зерттеңіз.</p><div class="hero-actions"><button class="primary jump" data-page="classification">Классификацияны бастау</button><button class="secondary jump" data-page="clustering">Кластерлерді көру</button></div></div>
+        <div class="hero-orb"><div>AI</div><span>Classification<br>+ Clustering</span></div>
+      </div>
+      <div class="stats">
+        <article><small>Тауар саны</small><strong id="statProducts">0</strong><em>деректер базасында</em></article>
+        <article><small>Категориялар</small><strong id="statCategories">0</strong><em>классификация класы</em></article>
+        <article><small>Кластерлер</small><strong>3</strong><em>K-Means алгоритмі</em></article>
+        <article><small>Орташа рейтинг</small><strong id="statRating">0</strong><em>барлық тауарлар</em></article>
+      </div>
+      <div class="grid2">
+        <article class="panel"><div class="panel-head"><div><h3>Категориялар бойынша тауарлар</h3><p>Каталог құрылымы</p></div></div><div class="chartbox"><canvas id="categoryChart"></canvas></div></article>
+        <article class="panel"><div class="panel-head"><div><h3>Жүйе қалай жұмыс істейді?</h3><p>Екі машиналық оқыту міндеті</p></div></div>
+          <div class="explain"><div class="explain-card"><b>01</b><div><h4>Классификация</h4><p>Белгілі мысалдар негізінде жаңа тауардың категориясын KNN әдісімен анықтайды.</p></div></div><div class="explain-card"><b>02</b><div><h4>Кластеризация</h4><p>Баға, рейтинг және сатылым көрсеткіштері бойынша K-Means әдісімен 3 топқа бөледі.</p></div></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="catalog" class="page">
+      <div class="section-top"><div><h2>Тауарлар каталогы</h2><p>Модель қолданатын демонстрациялық деректер жиыны</p></div><button class="primary" id="addDemo">+ Тауар қосу</button></div>
+      <div class="panel table-panel"><div class="filters"><input id="search" placeholder="Тауарды іздеу..."><select id="categoryFilter"><option value="">Барлық категория</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>Тауар</th><th>Категория</th><th>Бағасы</th><th>Рейтинг</th><th>Сатылым</th><th>Кластер</th></tr></thead><tbody id="productRows"></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="classification" class="page">
+      <div class="section-top"><div><h2>Тауар классификациясы</h2><p>K-Nearest Neighbors логикасы арқылы категорияны болжау</p></div><span class="algo">KNN • k = 5</span></div>
+      <div class="grid2 classify-grid">
+        <article class="panel form-panel"><h3>Жаңа тауар параметрлері</h3><p>Параметрлерді енгізіңіз. Жүйе ең ұқсас тауарларды тауып, категорияны анықтайды.</p>
+          <label>Тауар атауы<input id="cName" value="Жаңа смарт сағат"></label>
+          <div class="form-row"><label>Бағасы, ₸<input id="cPrice" type="number" value="65000"></label><label>Рейтинг<input id="cRating" type="number" step=".1" min="1" max="5" value="4.6"></label></div>
+          <label>Болжамды сатылым саны<input id="cSales" type="number" value="320"></label>
+          <button class="primary full" id="classifyBtn">Категорияны анықтау</button>
+        </article>
+        <article class="panel result-panel"><div class="result-icon">◎</div><small>КЛАССИФИКАЦИЯ НӘТИЖЕСІ</small><h3 id="classResult">Параметрлерді енгізіңіз</h3><p id="classConfidence">Нәтиже осы жерде көрсетіледі</p><div id="neighborList" class="neighbors"></div></article>
+      </div>
+      <article class="panel method"><h3>Классификация әдісі</h3><p>Демонстрациялық модель сандық белгілерді стандарттайды: баға, рейтинг және сатылым. Жаңа объект пен каталогтағы объектілер арасындағы Евклид қашықтығы есептеледі. Ең жақын 5 көршінің категориялары бойынша көпшілік дауыспен класс анықталады. Бұл тәсіл KNN алгоритмінің браузердегі ықшам іске асырылуы.</p></article>
+    </section>
+
+    <section id="clustering" class="page">
+      <div class="section-top"><div><h2>K-Means кластеризациясы</h2><p>Тауарларды мінез-құлқы ұқсас сегменттерге автоматты бөлу</p></div><button class="primary" id="rerunCluster">↻ Қайта есептеу</button></div>
+      <div class="cluster-cards"><article><i class="dot d0"></i><div><small>КЛАСТЕР 1</small><b id="cl0name">—</b><span id="cl0count">0 тауар</span></div></article><article><i class="dot d1"></i><div><small>КЛАСТЕР 2</small><b id="cl1name">—</b><span id="cl1count">0 тауар</span></div></article><article><i class="dot d2"></i><div><small>КЛАСТЕР 3</small><b id="cl2name">—</b><span id="cl2count">0 тауар</span></div></article></div>
+      <article class="panel"><div class="panel-head"><div><h3>Баға және сатылым картасы</h3><p>Әр нүкте — жеке тауар. Түс — есептелген кластер.</p></div></div><div class="chartbox tall"><canvas id="clusterChart"></canvas></div></article>
+      <div class="grid3" id="clusterDetails"></div>
+    </section>
+
+    <section id="analytics" class="page">
+      <div class="section-top"><div><h2>Аналитика</h2><p>Каталогтың негізгі көрсеткіштері</p></div></div>
+      <div class="grid2">
+        <article class="panel"><h3>Категориялар бойынша орташа баға</h3><div class="chartbox"><canvas id="priceChart"></canvas></div></article>
+        <article class="panel"><h3>Категориялар бойынша сатылым</h3><div class="chartbox"><canvas id="salesChart"></canvas></div></article>
+      </div>
+    </section>
+
+    <section id="about" class="page">
+      <div class="about-hero"><span class="eyebrow">ҒЫЛЫМИ ЖОБА</span><h2>Дүкен тауарларын классификациялау және кластеризациялау жүйесі</h2><p>Жобаның мақсаты — машиналық оқыту әдістерінің электрондық сауда деректерін құрылымдау мен талдауда қолданылуын интерактивті веб-жүйе арқылы көрсету.</p></div>
+      <div class="grid3">
+        <article class="panel info"><b>Мақсат</b><p>Тауарларды автоматты категориялау және сандық сипаттамалары бойынша табиғи сегменттерін анықтау.</p></article>
+        <article class="panel info"><b>Классификация</b><p>KNN алгоритмі белгіленген оқу мысалдарына сүйеніп, жаңа объектінің класын болжайды.</p></article>
+        <article class="panel info"><b>Кластеризация</b><p>K-Means алдын ала класс берілмеген объектілерді ұқсастығына қарай топтарға бөледі.</p></article>
+      </div>
+      <article class="panel method"><h3>Ғылыми маңызы</h3><p>Жоба supervised learning және unsupervised learning тәсілдерінің айырмашылығын бір деректер жиынында көрсетеді. Классификацияда мақсатты белгі — тауар категориясы белгілі, ал кластеризация кезінде алгоритм баға, рейтинг және сатылым белгілеріне сүйеніп құрылымды өздігінен анықтайды. Нәтижелер интерактивті диаграммалармен көрсетіледі.</p></article>
+    </section>
+  </main>
+
+  <div class="modal" id="modal"><div class="modal-card"><button class="close" id="closeModal">×</button><h3>Тауар қосу</h3><p>Жаңа дерек каталогқа және ML есептеулеріне бірден қосылады.</p><label>Атауы<input id="mName" placeholder="Мысалы, Bluetooth колонка"></label><label>Категория<select id="mCategory"></select></label><div class="form-row"><label>Бағасы, ₸<input id="mPrice" type="number" value="30000"></label><label>Рейтинг<input id="mRating" type="number" step=".1" value="4.5"></label></div><label>Сатылым<input id="mSales" type="number" value="200"></label><button class="primary full" id="saveProduct">Қосу</button></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
